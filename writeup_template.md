@@ -21,7 +21,7 @@ The goals / steps of this project are the following:
 
 [image1]: ./examples/undistort_output.png "Undistorted"
 [image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./writeup/warped_binary.png "Binary Example"
+[image3]: ./write_up/warped_binary.png "Binary Example"
 [image4]: ./examples/warped_straight_lines.jpg "Warp Example"
 [image5]: ./examples/color_fit_lines.jpg "Fit Visual"
 [image6]: ./examples/example_output.jpg "Output"
@@ -83,29 +83,28 @@ Example image is:
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+The code for my perspective transform includes a function called `getReverseBirdsEyeView()`, which appears in the "Helper Function" section in the notebook.  The `getReverseBirdsEyeView()` function takes as inputs an image (`img`). The source and destination vertices were hard coded after many trial and error.
 
 ```python
-src = np.float32(
-    [[(img_size[0] / 2) - 55, img_size[1] / 2 + 100],
-    [((img_size[0] / 6) - 10), img_size[1]],
-    [(img_size[0] * 5 / 6) + 60, img_size[1]],
-    [(img_size[0] / 2 + 55), img_size[1] / 2 + 100]])
-dst = np.float32(
-    [[(img_size[0] / 4), 0],
-    [(img_size[0] / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), 0]])
+ny,nx = img.shape[:2]
+src = np.float32([(575,464),
+                  (707,464), 
+                  (258,682), 
+                  (1049,682)])
+dst = np.float32([(450,0),
+                  (nx-450,0),
+                  (450,ny),
+                  (nx-450,ny)])
 ```
 
 This resulted in the following source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
-| 585, 460      | 320, 0        | 
-| 203, 720      | 320, 720      |
-| 1127, 720     | 960, 720      |
-| 695, 460      | 960, 0        |
+| 575, 464      | 450, 0        | 
+| 707, 464      | 830, 0      |
+| 258, 682     | 450, 720      |
+| 1049, 682      | 830, 720        |
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
