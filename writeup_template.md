@@ -21,11 +21,11 @@ The goals / steps of this project are the following:
 
 [image1]: ./examples/undistort_output.png "Undistorted"
 [image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./write_up/warped_binary.png "Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
-[video1]: ./project_video.mp4 "Video"
+[image3]: ./writeup_img/filters_trial.png "Binary Example"
+[image4]: ./writeup_img/warped_binary.png "Warp Example"
+[image5]: ./writeup_img/color_fit_lines.png "Fit Visual"
+[image6]: ./writeup_img/example_output.png "Output"
+[video1]: ./project_video_output.mp4 "Video"
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
 
@@ -112,13 +112,13 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+Then I got a histogram for a sliding window to identify which areas had concentrated pixels in the binary warped image that has been filtered to only show the lane lines. Then I identified the non-zero pixels centered at the peak of the histograms. By using these non-zero pixels, I fit a polynomial. The resulting image show the output:
 
 ![alt text][image5]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+I did this with the function 'calculateCurvature_meter()' in my notebook. 
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
