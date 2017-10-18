@@ -140,4 +140,6 @@ Here's a [link to my video result](./project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+I had the most difficulty in cases where the frame was too bright and saturated or too dark (shadow). I've also noticed my pipeline failing during the challenge videos where other cars are blocking the lane lines. 
+
+I think all these issues can be resolved if I allow the current frame to utilize the previous frame's polynomial fit. The rationale behind this approach is that lane curvature does not change dramatically from frame to frame. By initializing with the poly fit from previous frame, I can create more robust lane finding pipeline.
