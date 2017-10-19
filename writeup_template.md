@@ -19,7 +19,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/undistort_output.png "Undistorted"
+[image1]: ./writeup_img/ex_undistort.png "Undistorted"
 [image2]: ./test_images/test1.jpg "Road Transformed"
 [image3]: ./writeup_img/filters_trial.png "Binary Example"
 [image4]: ./writeup_img/warped_binary.png "Warp Example"
@@ -56,7 +56,7 @@ The results can be seen in the notebook.
 #### 1. Provide an example of a distortion-corrected image.
 
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-![alt text][image2]
+![alt text][image1]
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
@@ -118,7 +118,12 @@ Then I got a histogram for a sliding window to identify which areas had concentr
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
+I first identified the pixels where the lane lines were.
+Using the conversion factor of pixels/meter, I converted these pixels into meters.
+Then, I fit a new polynomial to these pixel values in meter.
+Using the formula provided in lecture, I calculated the radius.
 I did this with the function 'calculateCurvature_meter()' in my notebook. 
+
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
